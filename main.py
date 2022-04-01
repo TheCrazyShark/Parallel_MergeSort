@@ -1,7 +1,9 @@
+import multiprocessing as mp 	# Multiprocessing
+from datetime import datetime 	# Track time
+
 # Python program for implementation of MergeSort
 def mergeSort(arr):
 	if len(arr) > 1:
-
 		# Finding the mid of the array
 		mid = len(arr)//2
 
@@ -52,10 +54,17 @@ def printList(arr):
 # Driver Code
 if __name__ == '__main__':
 	mainArr = [12, 11, 13, 5, 6, 7]
+
 	print("Given array is", end="\n")
 	printList(mainArr)
+
+	start = datetime.now()		# Start tracking time
 	mergeSort(mainArr)
+	end = datetime.now()		# Stop tracking time
+
 	print("Sorted array is: ", end="\n")
 	printList(mainArr)
 
-# Initial MergeSort by Mayank Khanna at https://www.geeksforgeeks.org/merge-sort/
+	print("The time of execution of above program is :", end - start)
+
+# Initial MergeSort Algo used was created by Mayank Khanna at https://www.geeksforgeeks.org/merge-sort/
