@@ -1,4 +1,5 @@
 from time import perf_counter
+import random
 import multiprocessing as mp
 
 def logFile(time1,time2): #Used to write to a file named merge.log
@@ -48,6 +49,13 @@ def printList(arr):
     
     print()
 
+def generateNumbers(numElements, lower, upper):
+    randomArray = []
+    for i in range(numElements):
+        randomArray.append(random.randint(lower, upper))
+
+    return randomArray
+
 def dataInput():
     print("Input data file by name or location", end="\n")
     fName = input()
@@ -58,6 +66,7 @@ def dataInput():
 
 if __name__ == '__main__':
     arr = [12,11,13,5,6,7]
+    arr = generateNumbers(10, 1, 1000) # Generate 10 random numbers between 1-1000
     print("Given array is", end="\n")
     printList(arr)
     start = startTime()
