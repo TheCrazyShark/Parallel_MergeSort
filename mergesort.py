@@ -43,30 +43,27 @@ def mergeSort(arr): #takes in an array and performs mergesorts
             j+=1
             k+=1
 
+# used for printing the array, just used for testing probably omit this function
 def printList(arr):
     for i in range(len(arr)):
-         print(arr[i], end=" ") #used for printing the array, just used for testing probably omit this function
+         print(arr[i], end=" ")
     
     print()
 
-def generateNumbers(numElements, lower, upper):
+# Generates a number of element using a gaussian distribution
+def generateNumbers(numElements):
     randomArray = []
+    mu = 100
+    sigma = 50
+
     for i in range(numElements):
-        randomArray.append(random.randint(lower, upper))
+        randomArray.append(random.gauss(mu, sigma))
 
     return randomArray
 
-def dataInput():
-    print("Input data file by name or location", end="\n")
-    fName = input()
-    return fName
-
-#def readFile():
-    #this will depend on the structure of the file 
-
 if __name__ == '__main__':
     arr = [12,11,13,5,6,7]
-    arr = generateNumbers(10, 1, 1000) # Generate 10 random numbers between 1-1000
+    arr = generateNumbers(10) # Generate 10 random numbers in a normal distribution
     print("Given array is", end="\n")
     printList(arr)
     start = startTime()
