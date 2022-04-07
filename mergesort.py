@@ -3,14 +3,18 @@ import random
 import multiprocessing as mp
 
 # Used to write to a file named merge.log
-def logFile(seqtime1,seqtime2,paratime1,paratime2):
+def logFile(seqtime1,seqtime2,paratime1,paratime2): #Used to write to a file named merge.log
     f=open("merge.log","a")
     f.write("Sequential: \n")
     f.write("Elapsed time: ")
     f.write('{:.20f}'.format(seqtime1-seqtime2)+ "\n")
     f.write("Parallel: "+ "\n"+ "Elapsed time: ")
     f.write('{:.20f}'.format(paratime1-paratime2) +"\n")
+    f.write("The Speed up of the program was: ")
+    speedup = (seqtime1-seqtime2) // (paratime1-paratime2)
+    f.write('{:.10f}'.format(speedup))
     f.close()
+
 
 # Start Timer
 def startTime():
