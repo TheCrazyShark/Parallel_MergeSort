@@ -22,7 +22,7 @@ def startTime():
 # End Timer
 def endTime():
     end = perf_counter()
-    return end 
+    return end
 
 # Takes in an array and performs mergesort
 def mergeSort(arr):
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     for x in range(userInRunTimes):
         arr1 = generateNumbers(userInArraySize)
         arr2 = copyArray(arr1)
-        print("Given array is: ", arr1[:5])
+        print("Given sequential array is: ", arr1[:5])
 
         # Do Sequential Merge Sort
         start = startTime()
@@ -99,10 +99,10 @@ if __name__ == '__main__':
         # Print Sequential Data
         print("Sorted Array is: ", arr1[:5])
         print("Sequential Merge Sort Finished in",'{:.20f}'.format(end-start), "\n")
-        print("unsorted array: ", arr2[:5])
         sTimeArr.append(end-start)
 
         # Do Parallel Merge Sort
+        print("Given parallel array: ", arr2[:5])
         p = mp.Process(target=mergeSort(arr2))
         pStart = startTime()
         p.start()
@@ -116,6 +116,7 @@ if __name__ == '__main__':
 
         # Print Speedup
         speedup = (end - start) // (pEnd - pStart)
+        print("Sequential to Parallel Speedup: ", speedup, end="\n\n")
 
         # Log data
         #logFile(end,start,pEnd,pStart)
